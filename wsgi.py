@@ -1,9 +1,12 @@
 from flask import Flask
+import os
+
 application = Flask(__name__)
 
 @application.route("/")
 def hello():
-    return "test01 Hello World!"
+    message = os.environ.get('message','none')
+    return str(message)
 
 if __name__ == "__main__":
     application.run()
